@@ -6,15 +6,24 @@ using System.Threading.Tasks;
 
 namespace Skillfactory.Module17._DesignPatternsAndSOLID
 {
-    public class Account
+    public abstract class Account
     {
         // тип учетной записи
-        public string Type { get; set; }
+        public abstract string Type { get; }
 
         // баланс учетной записи
-        public double Balance { get; set; }
+        public double Balance { get; set;}
 
         // процентная ставка
-        public double Interest { get; set; }
+        public double Interest
+        {
+            get
+            {
+                return CalculateInterest();
+            }
+        }
+
+        protected abstract double CalculateInterest();
+        // Lets say there is a bunch of methods here, like ChangeBalance and more.
     }
 }
